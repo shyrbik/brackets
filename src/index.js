@@ -1,20 +1,21 @@
 module.exports = function check(str, bracketsConfig) {
-    
-    let confArr = bracketsConfig.map((i) => i[0] + i[1]);
+  let flag = true;
 
-    let stringForCompare = str;
-    while (true) {
-        for (let i = 0; i < confArr.length; i++) {
-            str = str.replace(confArr[i], '');
-        };
+  let arrConfig = bracketsConfig.map((i) => i[0] + i[1]);
 
-        if (str.length == 0) {
-            return true;
-        };
-        if (stringForCompare === str) {
-            return false;
-        };
+  let stringForCompare = str;
+  do {
+      for (let i = 0; i < arrConfig.length; i++) {
+          str = str.replace(arrConfig[i], '');
+      };
 
-        stringForCompare = str;
-    };
+      if (str.length == 0) {
+          return true;
+      };
+      if (stringForCompare === str) {
+          return false;
+      };
+
+      stringForCompare = str;
+  } while (flag);
 };
